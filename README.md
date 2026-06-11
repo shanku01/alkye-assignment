@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alkye Assignment
+
+A Next.js application that displays articles in a horizontal carousel with full detail pages.
+
+## Tech Stack
+
+- **Next.js 16** (App Router)
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS v4**
+- **Embla Carousel** (client-side carousel)
+
+## Features
+
+- Fetches articles from an external API
+- Horizontal carousel on home page with 1.5 slides visible on desktop, 1 slide on mobile
+- Article cards with background image, prompt badge, and description overlay
+- Detail page per article (`/[id]/details`)
+- Responsive design across all viewports
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+### Start production server
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Lint
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run lint
+```
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+├── app/
+│   ├── [id]/details/page.tsx   # Article detail page
+│   ├── globals.css              # Global styles + fonts
+│   ├── layout.tsx               # Root layout with providers
+│   └── page.tsx                 # Homepage with carousel
+├── components/
+│   ├── articleBox.tsx           # Article card component
+│   ├── ArticleCarousel.tsx      # Embla carousel wrapper
+│   └── header.tsx               # Page header
+├── context/
+│   └── ArticleContext.tsx       # Article data context + API fetch
+├── assets/
+│   └── fonts/                   # Custom local fonts
+└── public/                      # Static assets
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Data Source
+
+Articles are fetched from:
+```
+https://alkyetest-738240239910.us-central1.run.app/myapp/list/
+```
+
+The data is stored in React Context at the app level and shared between the homepage carousel and detail pages.
